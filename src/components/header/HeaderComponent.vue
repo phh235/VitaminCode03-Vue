@@ -16,27 +16,20 @@
 </template>
 
 <script setup>
-import { Info, Home, UserRound } from "lucide-vue-next"
-import { ref } from "vue"
-import { useRoute } from "vue-router"
+import { useRouter, useRoute } from "vue-router";
+import { computed } from 'vue';
 
 const route = useRoute()
+const router = useRouter()
 
-const sidebarItems = ref([
-  {
-    name: "Home",
-    to: "/home",
-    icon: Home,
-  },
-  {
-    name: "About",
-    to: "/about",
-    icon: Info,
-  },
-  {
-    name: "User Management",
-    to: "/user-management",
-    icon: UserRound,
-  },
-])
+// DRY  - Don't Repeat Yourself
+const sidebarItems = computed(() => {
+  return router.options.routes
+    .filter(router => router.meta?.isShow) // ?. optional chaining
+    .map(router => ({
+      name: router.name,
+      to: router.path,
+      icon: router.meta.icon
+    }))
+})
 </script>
