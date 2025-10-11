@@ -65,7 +65,7 @@ const router = createRouter({
       },
     },
     {
-      path: "/user-management/detail/:userId",
+      path: "/user-management/detail/:id",
       name: "User detail",
       component: UserDetail,
       meta: {
