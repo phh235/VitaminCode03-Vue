@@ -12,10 +12,24 @@
   <h1>User detail</h1>
   <p>User ID: {{ route.params.id }}</p>
   <!-- lấy được ID rồi thì truyền ID vào API để GET -->
-  <p>Name: {{ user.name }}</p>
-  <p>Username: {{ user.email }}</p>
-  <p>Address: {{ user.address?.street }}</p>
-  <p>Company: {{ user.company?.name }}</p>
+  <div class="flex flex-col gap-2">
+    <div class="flex flex-col gap-1">
+      <label class="font-semibold">Username</label>
+      <input
+        type="text"
+        class="border border-[#f5f5f5] px-2 py-1 rounded"
+        v-model="user.username"
+      />
+    </div>
+    <div class="flex flex-col gap-1">
+      <label class="font-semibold">Fullname</label>
+      <input type="text" class="border border-[#f5f5f5] px-2 py-1 rounded" v-model="user.name" />
+    </div>
+    <div class="flex flex-col gap-1">
+      <label class="font-semibold">Email</label>
+      <input type="text" class="border border-[#f5f5f5] px-2 py-1 rounded" v-model="user.email" />
+    </div>
+  </div>
 </template>
 
 <script setup>
@@ -31,8 +45,16 @@ const handleBackToListUser = () => {
   router.push("/user-management")
 }
 
-onMounted(async () => {
-  const res = await axios.get(`https://jsonplaceholder.typicode.com/users/${route.params.id}`)
-  user.value = res.data
+const getUserDetail = async () => {
+  try {
+    const res = await axios.get(`https://jsonplaceholder.typicode.com/users/${route.params.id}`)
+    Object.assign(user.value, res.data)
+  } catch (e) {
+    console.log(e)
+  }
+}
+
+onMounted(() => {
+  getUserDetail()
 })
 </script>
