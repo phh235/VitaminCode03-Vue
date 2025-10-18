@@ -18,43 +18,42 @@
       <input
         type="text"
         class="border border-[#f5f5f5] px-2 py-1 rounded"
-        v-model="user.username"
+        :value="userStore.user?.username"
       />
     </div>
     <div class="flex flex-col gap-1">
       <label class="font-semibold">Fullname</label>
-      <input type="text" class="border border-[#f5f5f5] px-2 py-1 rounded" v-model="user.name" />
+      <input
+        type="text"
+        class="border border-[#f5f5f5] px-2 py-1 rounded"
+        :value="userStore.user?.name"
+      />
     </div>
     <div class="flex flex-col gap-1">
       <label class="font-semibold">Email</label>
-      <input type="text" class="border border-[#f5f5f5] px-2 py-1 rounded" v-model="user.email" />
+      <input
+        type="text"
+        class="border border-[#f5f5f5] px-2 py-1 rounded"
+        :value="userStore.user?.email"
+      />
     </div>
   </div>
 </template>
 
 <script setup>
-import axios from "axios"
-import { ref, onMounted } from "vue"
+import { onMounted } from "vue"
 import { useRouter, useRoute } from "vue-router"
+import { useUserStore } from "../../stores/userStore"
 
 const route = useRoute()
 const router = useRouter()
-const user = ref({}) // object
+const userStore = useUserStore()
 
 const handleBackToListUser = () => {
   router.push("/user-management")
 }
 
-const getUserDetail = async () => {
-  try {
-    const res = await axios.get(`https://jsonplaceholder.typicode.com/users/${route.params.id}`)
-    Object.assign(user.value, res.data)
-  } catch (e) {
-    console.log(e)
-  }
-}
-
 onMounted(() => {
-  getUserDetail()
+  userStore.getUserInfo(route.params.id)
 })
 </script>
