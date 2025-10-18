@@ -7,6 +7,9 @@ import HomePage from "../views/content/HomePage.vue"
 import AboutPage from "../views/content/AboutPage.vue"
 import UserManagement from "../views/user/UserManagement.vue"
 import UserDetail from "../views/user/UserDetail.vue"
+import { Info, Home, UserRound } from "lucide-vue-next"
+import LifecycleHooks from "../views/content/LifecycleHooks.vue"
+import { Gauge } from "lucide-vue-next"
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -38,21 +41,45 @@ const router = createRouter({
       path: "/home",
       name: "Home",
       component: HomePage,
+      meta: {
+        icon: Home,
+        isShow: true
+      }
     },
     {
       path: "/about",
       name: "About",
       component: AboutPage,
+      meta: {
+        icon: Info,
+        isShow: true
+      },
     },
     {
       path: "/user-management",
       name: "User management",
       component: UserManagement,
+      meta: {
+        icon: UserRound,
+        isShow: true
+      },
     },
     {
-      path: "/user-management/detail/:userId",
+      path: "/user-management/detail/:id",
       name: "User detail",
       component: UserDetail,
+      meta: {
+        isShow: false
+      }
+    },
+    {
+      path: "/lifecycle-hooks",
+      name: "Lifecycle hooks",
+      component: LifecycleHooks,
+      meta: {
+        icon: Gauge,
+        isShow: true
+      },
     },
   ],
 })
