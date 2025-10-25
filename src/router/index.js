@@ -7,9 +7,12 @@ import HomePage from "../views/content/HomePage.vue"
 import AboutPage from "../views/content/AboutPage.vue"
 import UserManagement from "../views/user/UserManagement.vue"
 import UserDetail from "../views/user/UserDetail.vue"
-import { Info, Home, UserRound } from "lucide-vue-next"
+import { Info, Home, UserRound, FileText } from "lucide-vue-next"
 import LifecycleHooks from "../views/content/LifecycleHooks.vue"
 import { Gauge } from "lucide-vue-next"
+import PostPage from "../views/content/PostPage.vue"
+import ParentComponent from "../views/props/ParentComponent.vue"
+import { ArrowBigDown } from "lucide-vue-next"
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -43,8 +46,8 @@ const router = createRouter({
       component: HomePage,
       meta: {
         icon: Home,
-        isShow: true
-      }
+        isShow: true,
+      },
     },
     {
       path: "/about",
@@ -52,7 +55,7 @@ const router = createRouter({
       component: AboutPage,
       meta: {
         icon: Info,
-        isShow: true
+        isShow: true,
       },
     },
     {
@@ -61,7 +64,7 @@ const router = createRouter({
       component: UserManagement,
       meta: {
         icon: UserRound,
-        isShow: true
+        isShow: true,
       },
     },
     {
@@ -69,8 +72,8 @@ const router = createRouter({
       name: "User detail",
       component: UserDetail,
       meta: {
-        isShow: false
-      }
+        isShow: false,
+      },
     },
     {
       path: "/lifecycle-hooks",
@@ -78,7 +81,25 @@ const router = createRouter({
       component: LifecycleHooks,
       meta: {
         icon: Gauge,
-        isShow: true
+        isShow: true,
+      },
+    },
+    {
+      path: "/posts",
+      name: "Posts",
+      component: PostPage,
+      meta: {
+        icon: FileText,
+        isShow: true,
+      },
+    },
+    {
+      path: "/props",
+      name: "Props",
+      component: ParentComponent,
+      meta: {
+        icon: ArrowBigDown,
+        isShow: true,
       },
     },
   ],
