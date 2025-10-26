@@ -13,6 +13,7 @@ import { Gauge } from "lucide-vue-next"
 import PostPage from "../views/content/PostPage.vue"
 import ParentComponent from "../views/props/ParentComponent.vue"
 import { ArrowBigDown } from "lucide-vue-next"
+import ParentComp from "../views/props-v2/ParentComp.vue"
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -97,6 +98,15 @@ const router = createRouter({
       path: "/props",
       name: "Props",
       component: ParentComponent,
+      meta: {
+        icon: ArrowBigDown,
+        isShow: true,
+      },
+    },
+    {
+      path: "/props-v2",
+      name: "Props-V2",
+      component: ParentComp,
       meta: {
         icon: ArrowBigDown,
         isShow: true,
