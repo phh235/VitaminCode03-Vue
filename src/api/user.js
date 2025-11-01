@@ -1,11 +1,7 @@
-import axios from "axios"
+import { apiService } from "./apiService"
 
 export const getAllUsers = async () => {
-  const response = await axios.get("https://jsonplaceholder.typicode.com/users")
+  const response = await apiService.get("users/get-all-user")
   return response
 }
 
-export const getUserById = async (id) => {
-  const response = await axios.get(`https://jsonplaceholder.typicode.com/users/${id}`)
-  return response
-}

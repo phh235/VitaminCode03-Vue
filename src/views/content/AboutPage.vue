@@ -1,10 +1,9 @@
 <template>
-  <p>{{ counterStore.count }}</p>
-  <button @click="counterStore.incrementCount">Tăng</button>
+  <div class="box">hello</div>
 </template>
 
-<script setup>
-import { useCounterStore } from "../../stores/counter"
-
-const counterStore = useCounterStore()
-</script>
+<style scoped>
+.box {
+  color: red;
+}
+</style>
