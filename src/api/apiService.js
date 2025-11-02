@@ -28,6 +28,15 @@ export const apiService = {
     }
   },
 
+  put: async (url, data) => {
+    try {
+      return (await api.put(url, data)).data
+    } catch (error) {
+      console.log(error)
+      throw error
+    }
+  },
+
   delete: async (url, id) => {
     try {
       return (await api.delete(url, { data: id })).data
