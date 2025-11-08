@@ -14,6 +14,9 @@ import PostPage from "../views/content/PostPage.vue"
 import ParentComponent from "../views/props/ParentComponent.vue"
 import { ArrowBigDown } from "lucide-vue-next"
 import ParentComp from "../views/props-v2/ParentComp.vue"
+import StudentDetail from "../views/students/StudentDetail.vue"
+import StudentManagement from "../views/students/StudentManagement.vue"
+import { UsersRound } from "lucide-vue-next"
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -118,6 +121,24 @@ const router = createRouter({
       meta: {
         icon: ArrowBigDown,
         isShow: true,
+      },
+    },
+    {
+      path: "/students",
+      name: "Student management",
+      component: StudentManagement,
+      meta: {
+        icon: UsersRound,
+        isShow: true,
+      },
+    },
+    {
+      path: "/student-detail/:id",
+      name: "Student detail",
+      component: StudentDetail,
+      meta: {
+        icon: ArrowBigDown,
+        isShow: false,
       },
     },
   ],

@@ -16,6 +16,7 @@
   "dependencies": {
     "@tailwindcss/vite": "^4.1.13",
     "axios": "^1.12.2",
+    "dayjs": "^1.11.19",
     "lucide-vue-next": "^0.544.0",
     "pinia": "^3.0.3",
     "tailwindcss": "^4.1.13",
