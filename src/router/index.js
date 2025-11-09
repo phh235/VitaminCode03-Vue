@@ -124,7 +124,7 @@ const router = createRouter({
       },
     },
     {
-      path: "/students",
+      path: "/student-management",
       name: "Student management",
       component: StudentManagement,
       meta: {
@@ -133,8 +133,17 @@ const router = createRouter({
       },
     },
     {
-      path: "/student-detail/:id",
-      name: "Student detail",
+      path: "/student-management/detail/:studentCode",
+      name: "Student management detail",
+      component: StudentDetail,
+      meta: {
+        icon: ArrowBigDown,
+        isShow: false,
+      },
+    },
+    {
+      path: "/student-management/create",
+      name: "Student create",
       component: StudentDetail,
       meta: {
         icon: ArrowBigDown,

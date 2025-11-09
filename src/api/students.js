@@ -15,6 +15,11 @@ export const saveStudent = async (student) => {
   return response
 }
 
+export const updateStudent = async (id, student) => {
+  const response = await apiService.put(`students?id=${id}`, student)
+  return response
+}
+
 export const deleteStudent = async (studentId) => {
   const response = await apiService.delete(`students?id=${studentId}`)
   return response

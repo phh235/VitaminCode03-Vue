@@ -5,6 +5,7 @@ import {
   getAllStudents,
   getStudentByStudentCode,
   saveStudent,
+  updateStudent,
 } from "../api/students"
 
 export const useStudentStore = defineStore("student", () => {
@@ -21,8 +22,13 @@ export const useStudentStore = defineStore("student", () => {
     student.value = response.data
   }
 
-  const createNewStudent = async (student) => {
+  const saveStudentInfo = async (student) => {
     const response = await saveStudent(student)
+    return response
+  }
+
+  const updateStudentInfo = async (id, student) => {
+    const response = await updateStudent(id, student)
     return response
   }
 
@@ -31,5 +37,13 @@ export const useStudentStore = defineStore("student", () => {
     return response
   }
 
-  return { students, student, getStudents, getStudentInfo, createNewStudent, deleteStudentById }
+  return {
+    students,
+    student,
+    getStudents,
+    getStudentInfo,
+    saveStudentInfo,
+    updateStudentInfo,
+    deleteStudentById,
+  }
 })

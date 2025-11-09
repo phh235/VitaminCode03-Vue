@@ -6,7 +6,7 @@
       :value="modelValue"
       :placeholder="placeholder"
       @input="$emit('update:modelValue', $event.target.value)"
-      class="border border-sky-400 rounded-md p-2"
+      class="border border-[#808080] rounded-md p-2 outline-none"
     />
   </div>
 </template>
